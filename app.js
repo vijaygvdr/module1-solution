@@ -6,26 +6,24 @@
   function LunchCheckController($scope) {
     $scope.name = "";
     $scope.sayMessage = "";
-    $scope.messageText = validateText($scope.name)
-  }
-
-function validateText(string) {
-  if(string != "")
-  {
-    var nameLength = string.split(',');
-    if(nameLength <= 3)
-    {
-      $scope.sayMessage = "Enjoy!";
+    $scope.messageText = function () {
+      var lunchText = $scope.name;
+        if(lunchText != "")
+        {
+          var nameLength = lunchText.split(',');
+          if(nameLength.length <= 3)
+          {
+            $scope.sayMessage = "Enjoy!";
+          }
+          else if(nameLength.length > 3)
+          {
+            $scope.sayMessage = "Too Much!";
+          }
+        }
+        else {
+          $scope.sayMessage = "Please enter data first";
+        }
     }
-    else if(nameLength > 3)
-    {
-      $scope.sayMessage = "Too Much!";
-    }
-  }
-  else {
-    $scope.sayMessage = "Please enter data first";
   }
 }
-}
-
 )();
